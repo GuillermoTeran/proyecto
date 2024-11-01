@@ -1,16 +1,14 @@
 services:
   - type: web
-    name: my-web-service
+    name: python-app
     env: python
-    plan: free
     region: oregon
     buildCommand: "pip install -r requirement.txt"
-    startCommand: "gunicorn app:app"
+    startCommand: "gunicorn app:app"  # Cambia a tu comando de inicio, ej. "gunicorn myapp.wsgi"
+    branch: main
+    autoDeploy: true
     envVars:
       - key: ENV
         value: production
       - key: DEBUG
         value: "false"
-    healthCheckPath: "/health"
-    autoDeploy: true
-    branch: main
