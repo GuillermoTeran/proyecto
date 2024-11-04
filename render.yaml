@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: python-app
+    env: python
+    region: oregon
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"  # Cambia a tu comando de inicio, ej. "gunicorn myapp.wsgi"
+    branch: main
+    autoDeploy: true
+    envVars:
+      - key: ENV
+        value: production
+      - key: DEBUG
+        value: "false"
+
